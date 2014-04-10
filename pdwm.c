@@ -55,7 +55,8 @@
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_font_getexts_width(drw->font, X, strlen(X)) + drw->font->h)
-#include "dwm.h"
+#include "pdwm_types.h"
+#include "pdwm.h"
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 

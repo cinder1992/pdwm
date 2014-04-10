@@ -1,5 +1,5 @@
-# dwm version
-VERSION = 6.1
+# pdwm version
+VERSION = 0.1.100414
 
 # Customize below to fit your system
 
@@ -29,4 +29,4 @@ LDFLAGS  = -s ${LIBS}
 #LDFLAGS = ${LIBS}
 
 # compiler and linker
-CC = cc
+CC = gcc
