@@ -64,6 +64,17 @@
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
+int genTagRules(char **c) {
+  int i, j, ret;
+  ret = 0;
+  for(i = 0; i < LENGTH(tags); i++) {
+    for(j = 1; j <= c[0]; j++) { /* set j to 1 to skip the first entry, the size entry */
+      if(strncmp(tags[i], c[j], 100) == 0)
+        ret |= 1 << i;
+    }
+  }
+  return ret;
+}
 void
 applyrules(Client *c) {
 	const char *class, *instance;
@@ -85,7 +96,7 @@ applyrules(Client *c) {
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->isfloating = r->isfloating;
-			c->tags |= r->tags;
+			c->tags |= genTagRules(r->tags);
 			for(m = mons; m && m->num != r->monitor; m = m->next);
 			if(m)
 				c->mon = m;

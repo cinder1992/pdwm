@@ -79,7 +79,7 @@ typedef struct {
 	const char *class;
 	const char *instance;
 	const char *title;
-	unsigned int tags;
+	char **tags;
 	Bool isfloating;
 	int monitor;
 } Rule;

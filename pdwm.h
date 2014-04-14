@@ -1,6 +1,7 @@
 #ifndef DWM_H_
 #define DWM_H_
 /* function declarations */
+int genTagRules(char **);
 static void applyrules(Client *c);
 static Bool applysizehints(Client *c, int *x, int *y, int *w, int *h, Bool interact);
 static void arrange(Monitor *m);

@@ -1,5 +1,5 @@
 # pdwm version
-VERSION = 0.1.100414
+VERSION = 0.1.140414
 
 # Customize below to fit your system
 
