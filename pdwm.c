@@ -1378,7 +1378,7 @@ spawn(const Arg *arg) {
 			close(ConnectionNumber(dpy));
 		setsid();
 		execvp(((char **)arg->v)[0], (char **)arg->v);
-		fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
+		fprintf(stderr, "pdwm: execvp %s", ((char **)arg->v)[0]);
 		perror(" failed");
 		exit(EXIT_SUCCESS);
 	}
@@ -1725,7 +1725,7 @@ updatetitle(Client *c) {
 void
 updatestatus(void) {
 	if(!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "dwm-"VERSION);
+		strcpy(stext, "pdwm-"VERSION);
 	drawbar(selmon);
 }
 
@@ -1813,7 +1813,7 @@ xerror(Display *dpy, XErrorEvent *ee) {
 	|| (ee->request_code == X_GrabKey && ee->error_code == BadAccess)
 	|| (ee->request_code == X_CopyArea && ee->error_code == BadDrawable))
 		return 0;
-	fprintf(stderr, "dwm: fatal error: request code=%d, error code=%d\n",
+	fprintf(stderr, "pdwm: fatal error: request code=%d, error code=%d\n",
 			ee->request_code, ee->error_code);
 	return xerrorxlib(dpy, ee); /* may call exit */
 }
@@ -1827,7 +1827,7 @@ xerrordummy(Display *dpy, XErrorEvent *ee) {
  * is already running. */
 int
 xerrorstart(Display *dpy, XErrorEvent *ee) {
-	die("dwm: another window manager is already running\n");
+	die("pdwm: another window manager is already running\n");
 	return -1;
 }
 
@@ -1847,13 +1847,13 @@ zoom(const Arg *arg) {
 int
 main(int argc, char *argv[]) {
 	if(argc == 2 && !strcmp("-v", argv[1]))
-		die("dwm-"VERSION", © 2006-2012 dwm engineers, see LICENSE for details\n");
+		die("pdwm-"VERSION", © 2006-204 dwm and pdwm engineers, see LICENSE for details\n");
 	else if(argc != 1)
-		die("usage: dwm [-v]\n");
+		die("usage: pdwm [-v]\n");
 	if(!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if(!(dpy = XOpenDisplay(NULL)))
-		die("dwm: cannot open display\n");
+		die("pdwm: cannot open display\n");
 	checkotherwm();
 	setup();
 	scan();
